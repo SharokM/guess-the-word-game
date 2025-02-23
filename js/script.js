@@ -13,11 +13,13 @@ const span = document.querySelector(".remaining span");
 const message = document.querySelector(".message");
 // The empty paragraph where messages will appear when the player guesses a letter.
 const replayButton = document.querySelector(".play-again");
+// new game button
 
 const word = "magnolia";
-// your starting word to test out the game
+// starting word to test out the game
 
 const placeHolder = function (word) {
+    // function to update the paragraph’s innerText for the “words-in-progress” element with circle symbols
     const letters = [];
     for (let letter of word) {
         console.log(letter)
@@ -28,6 +30,7 @@ const placeHolder = function (word) {
 placeHolder(word);
 
 button.addEventListener("click", function(e){
+    // event listener for when a player clicks the Guess button.
     e.preventDefault();
     const inputValue = letterInput.value;
     console.log(inputValue);
