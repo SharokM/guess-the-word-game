@@ -14,6 +14,7 @@ const messageToUser = document.querySelector(".message");
 // The empty paragraph where messages will appear when the player guesses a letter.
 const replayButton = document.querySelector(".play-again");
 // new game button
+// const win = document/querySelector(".highlight");
 
 const word = "magnolia";
 // starting word to test out the game
@@ -30,60 +31,127 @@ const placeHolder = function (word) {
 }
 placeHolder(word);
 
-
 button.addEventListener("click", function(e){
-    // event listener for when a player clicks the Guess button.
     e.preventDefault();
     // prevent auto clear 
     messageToUser.innerText = "";
+    // use input 
     const inputValue = letterInput.value;
-    letterInput.value = "";
-    
-    playerInput(inputValue);
-    // console.log(inputValue)
+    // take single letter 
+    const goodGuess = playerInput(letter);
+
+    if(goodGuess) {
+        makeGuess(letter);
+    }
+    letterInput.value = ""
 })
 
-// button.addEventListener("click", function(){
+// TEST - EVENT LISTENER 
+// button.addEventListener("click", function(e){
+//     // event listener for when a player clicks the Guess button.
 //     e.preventDefault();
 //     // prevent auto clear 
 //     messageToUser.innerText = "";
-//     // use input 
-//     const letter = letterInput.value;
-//     // take single letter 
-//     const goodGuess = playerInput(letter);
-
-//     if(goodGuess) {
-//         makeGuess(letter);
-//     }
-//     letterInput.value = ""
+    // use input
+//     const inputValue = letterInput.value;
+//     letterInput.value = "";
+    
+//     playerInput(inputValue);
+//     // console.log(inputValue)
 // })
 
-
-
 // function & regex to check input value valid 
-const playerInput = function(inputValue) {
+const playerInput = function(input) {
     const acceptedLetter = /[a-zA-Z]/;
     // const acceptedLetter = new RegExp("/[a-zA-Z]/;")
     // Regex method
    
-    if (inputValue.length === 0) {
+    if (input.length === 0) {
         messageToUser.innerText = "please enter something... anything!";
-    } else if (inputValue.length > 1) {
+    } else if (input.length > 1) {
         messageToUser.innerText = "1 letter at a time!"
-    } else if (!inputValue.match(acceptedLetter)) {
+    } else if (!input.match(acceptedLetter)) {
         messageToUser.innerText = "enter a single letter from A-Z"
     } else {
-        return inputValue;
+        return input;
     }
 }
 
 // function to check if letter already guess & also change to upper case
 const makeGuess = function (letter) {
     letter = letter.toUpperCase();
-    if (letter == alreadyGuessed) {
+    if (guessedLetters.includes(letter)) {
         messageToUser.innerText("You already guessed this letter");
     } else {
-        guessedLetters.append(letter);
+        guessedLetters.push(letter);
+        console.log(guessedLetters);
+        playerGuesses();
+        updateWord(guessedLetters)
     }
-    console.log(guessedLetters);
+};
+
+// function to show guessed letters 
+const playerGuesses = function() {
+    alreadyGuessed.innerHTML = "";
+    // clear list of ul
+    for (const guess of guessedLetters) {
+    const li = document.createElement("li");
+    // create list item for each letter in guessedletter array
+    li.innerText = guess;
+    alreadyGuessed.append(li);
+    // add new list item to ul
+    }
+};
+
+// Function to Update the Word in Progress
+const updateWord = function (guessedLetters) {
+    // change the word variable to uppercase.
+    const wordUpper = word.toUpperCase();
+    // split the word string into an array
+    const wordArray = word.split("");
+    // create a new array with the updated characters 
+    const revealWord = [];
+    // Check if the wordArray contains any letters from the guessedLetters array
+    for (const letter of wordArray) {
+        if (guessedLetters.includes(guess)) {
+            revealWord.push(letter.toUpperCase());
+        } else { revealWord.push("●");
+        }
+    }
+    console.log(revealWord);
+    wonGame();
 }
+
+const wonGame = function () {
+    if (wordInProgress.innerText === word.toUpperCase) {
+        messageToUser.classList.add("win");
+        messageToUser.innerHTML = ("highlight");
+    }
+
+
+// FIX GUESS VS LETTER PARAMETERS!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
