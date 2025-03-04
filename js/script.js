@@ -19,7 +19,7 @@ let word = "magnolia";
 // starting word to test out the game
 const guessedLetters = [];
 // guessed letters array 
-let guessesLeftRemaining = 3;
+let guessesLeftRemaining = 8;
 // remaining guesses 
 
 // Random word pull 
@@ -189,11 +189,10 @@ const startOver = function () {
 playAgainbutton.addEventListener("click", function() {
     messageToUser.classList.remove("win");
     guessedLetters = []; 
-    guessesLeftRemaining = 10; 
-    span.innerText = `<p class="remaining">You have <span>10 guesses</span></p>`;
+    guessesLeftRemaining = 8; 
+    span.innerText = `${guessesLeftRemaining} remaining`;
     alreadyGuessed.innerHTML = ""; 
     messageToUser.innerText = ""; 
-    
     getWord();
     button.classList.remove("hide"); 
     replayButton.classList.add("hide"); 
