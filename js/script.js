@@ -24,15 +24,16 @@ let guessesLeftRemaining = 8;
 
 // Random word pull 
 const getWord = async function () {
-    const res = await fetch("https://lotrapi.co/api/v1/characters/");
-    const data = await res.text();
-    const wordArray = data.split("\n") 
-    // change word to words 
-    const randomIndex = Math.floor(Math.random() * wordArray.length)
-    word = wordArray[randomIndex].trim();
-    console.log(data)
-    // selectRandomWord(data);
-    placeHolder(word);
+    const res = await fetch("https://lotrapi.co/api/v1/characters?fields=name");
+    // /api/v1/characters?fields=name/swagger.json
+    const data = await res.json();
+    // const wordArray = data.split("\n"); 
+    console.log(data);
+    // const randomIndex = Math.floor(Math.random() * wordArray.length)
+    // word = wordArray[randomIndex].trim();
+    // console.log(data)
+    // getWord(data);
+    // placeHolder(word);
 }
 // Start 
 getWord();
