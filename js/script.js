@@ -17,7 +17,7 @@ const replayButton = document.querySelector(".play-again");
 
 let word = "magnolia";
 // starting word to test out the game
-const guessedLetters = [];
+let guessedLetters = [];
 // guessed letters array 
 let guessesLeftRemaining = 8;
 // remaining guesses 
@@ -186,11 +186,11 @@ const startOver = function () {
     replayButton.classList.remove("hide");
 }
 
-playAgainbutton.addEventListener("click", function() {
+replayButton.addEventListener("click", function() {
     messageToUser.classList.remove("win");
     guessedLetters = []; 
     guessesLeftRemaining = 8; 
-    span.innerText = `${guessesLeftRemaining} remaining`;
+    span.innerText = `${guessesLeftRemaining} guesses remaining`;
     alreadyGuessed.innerHTML = ""; 
     messageToUser.innerText = ""; 
     getWord();
@@ -199,5 +199,6 @@ playAgainbutton.addEventListener("click", function() {
     remainingGuesses.classList.remove("hide"); 
     alreadyGuessed.classList.remove("hide");
 })
+
 
 
