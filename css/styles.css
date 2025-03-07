@@ -15,7 +15,7 @@ body {
   background-image: url("../img/leaves-forest.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
-  color: #305050;
+  color: orange;
 }
 
 .logo {
@@ -64,7 +64,7 @@ h1 {
 
 .word-in-progress {
   letter-spacing: 15px;
-  color: #28bdbd;
+  color: orange;
   font-size: 30px;
 }
 
@@ -115,7 +115,7 @@ input:focus {
   padding: 1em 3em;
   border-radius: 50px;
   margin-top: 1em;
-  color: #fff;
+  color: yellow;
   background: #ff8d5c;
   font-size: 1em;
   align-self: center;
