@@ -12,9 +12,9 @@ body {
   font-size: 20px;
   line-height: 150%;
   background-color: #dff6f6;
-  background-image: url("../img/moving.mp4");
-  background-size: 800px;
-  background-repeat: repeat;
+  background-image: url("../img/leaves-forest.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
   color: #305050;
 }
 
