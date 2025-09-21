@@ -40,7 +40,7 @@ getWord();
 const placeHolder = function (word) {
     const placeHolderLetters = [];
     for (const letter of word) {
-        console.log(letter)
+        // console.log(letter) 
         placeHolderLetters.push("●");
     }
     wordInProgress.innerText = placeHolderLetters.join("");
@@ -57,7 +57,7 @@ button.addEventListener("click", function(e){
     // // user input 
     const guess = letterInput.value;
     // // take single letter 
-    console.log(guess)
+    // console.log(guess)
     const goodGuess = playerInput(guess);
 
     if(goodGuess) {
@@ -110,7 +110,7 @@ const makeGuess = function (guess) {
         messageToUser.innerText = "You tried that already!";
     } else {
         guessedLetters.push(guess);
-        console.log(guessedLetters);
+        // console.log(guessedLetters);
         guessesRemaining(guess);
         playerGuesses();
         updateWordInProgress(guessedLetters);
