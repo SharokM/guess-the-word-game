@@ -20,7 +20,7 @@ let word = "magnolia";
 let guessedLetters = [];
 // guessed letters array 
 let guessesLeftRemaining = 8;
-// remaining guesses 
+// remaining guesses  
 
 // Random word pull 
 const getWord = async function () {
@@ -29,8 +29,6 @@ const getWord = async function () {
     const wordArray = data.split("\n") 
     const randomIndex = Math.floor(Math.random() * wordArray.length)
     word = wordArray[randomIndex].trim();
-    // console.log(data)
-    // selectRandomWord(data);
     placeHolder(word);
 }
 // Start 
@@ -40,14 +38,10 @@ getWord();
 const placeHolder = function (word) {
     const placeHolderLetters = [];
     for (const letter of word) {
-        // console.log(letter) 
         placeHolderLetters.push("●");
     }
     wordInProgress.innerText = placeHolderLetters.join("");
 };
-
-// placeHolder(word);
-// getWord();
 
 // event listener to update input box 
 button.addEventListener("click", function(e){
@@ -57,7 +51,6 @@ button.addEventListener("click", function(e){
     // // user input 
     const guess = letterInput.value;
     // // take single letter 
-    // console.log(guess)
     const goodGuess = playerInput(guess);
 
     if(goodGuess) {
@@ -67,29 +60,11 @@ button.addEventListener("click", function(e){
     playerInput(guess);
 });
 
-// input function 
-   // event listener to update input box 
-// button.addEventListener("click", function(e){
-//     e.preventDefault();
-//     // prevent auto clear 
-//     messageToUser.innerText = "";
-    
-//     const inputValue = letterInput.value;
-    
-//     const goodGuess = playerInput(letter);
-
-//     if (goodGuess) {
-       
-//         makeGuess(guess);
-//     }
-//     letterInput.value = "";
-// })
 
 // function & regex to check input value valid 
 const playerInput = function(input) {
     const acceptedLetter = /[a-zA-Z]/;
     // const acceptedLetter = new RegExp("/[a-zA-Z]/;")
-//     // Regex 
    
     if (input.length === 0) {
         messageToUser.innerText = "Please enter something... anything!";
@@ -110,7 +85,6 @@ const makeGuess = function (guess) {
         messageToUser.innerText = "You tried that already!";
     } else {
         guessedLetters.push(guess);
-        // console.log(guessedLetters);
         guessesRemaining(guess);
         playerGuesses();
         updateWordInProgress(guessedLetters);
@@ -145,7 +119,7 @@ const updateWordInProgress = function (guessedLetters) {
         } else {revealWord.push("●");
         }
     }
-    // console.log(revealWord);
+
     wordInProgress.innerText = revealWord.join("");
     wonGame();
 };
